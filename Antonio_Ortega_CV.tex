@@ -42,6 +42,8 @@
 \usepackage{xspace}
 \usepackage{fancyhdr}
 %\setlength{\headheight}{13.6pt}
+\usepackage[backend=biber,doi=false, isbn=false, url=false, style=numeric,sorting=none,citestyle=numeric-comp,maxnames=1,minnames=1]{biblatex}
+\addbibresource{mypapers.bib}
 
 \usepackage{multicol} %lists on multicolumns side by side
 \usepackage{multirow}
@@ -173,34 +175,12 @@
 \begin{document}
 
 
-% you can upload a photo and include it here...
-%\begin{wrapfigure}{l}{0.5\textwidth}
-%	\vspace*{-2em}
-%		\includegraphics[width=0.15\textwidth]{photo}
-%\end{wrapfigure}
-
-%\MyName{Your Name}
-%\MySlogan{Curriculum Vitae}
-%
-%\sepspace
-
-
 
 \thispagestyle{fancy}
 %% Header
 %%% ------------------------------------------------------------
 % Set your name here
 \def\name{\color{StrongRed}{\LARGE{\textsc{\textbf{Antonio Ortega Jiménez}}}}}
-%\centerline{\name}
-%\vspace{10pt}
-%\centerline{
-%Sigynsgade 79, K{\o}benhavn, Denmark
-%|
-%\href{mailto:ntoniogu@gmail.com}{ntoniohu@gmail.com}
-%|
-%\href{https://antortjim.github.io}{antortjim.github.io}
-%}
-
 \centerline{\name}
 
 \begin{figure}[!h]
@@ -217,9 +197,8 @@
  \begin{minipage}[r]{0.50\textwidth}
    %\large
    
-   PhD student at Liu Lab @ VIB-KU Leuven Center for Brain \& Disease Research studying the structure and regulation of social sleep in \textit{Drosophila}
- 
-%   Graduate student in Bioinformatics with background in Biochemistry. Experienced on probabilistic programming, machine learning and data visualization. A passionate self-learner, keen to learn as much as possible while yielding quality results.
+   PhD student at Liu Lab @ VIB-KU Leuven Center for Brain \& Disease Research studying social sleep in \textit{Drosophila}
+
  \end{minipage}
 \end{figure}
 
@@ -228,8 +207,7 @@
 \NewPart{Experience}
 
 \Entry{PhD. student}{July 2021 - }{VIB-KU Leuven - Belgium}{
-I am interested in studying the behavior and sleep of \textit{Drosophila}. In my research I try to understand how sleep develops in a context as natural as possible, including social interactions with other individuals. In order to model this, I am building a setup where I aim to track multiple freely interacting individuals over at least a full day.
-}
+I am interested in studying the behavior and sleep of \textit{Drosophila}. In my research I try to understand how sleep develops in a context as natural as possible, including social interactions with other individuals. In order to model this, I built an apparatus where I track sleep patterns in groups of freely interacting individuals over a full day, and now I use to unravel sleep synchronization mechanisms.}
 
 \Entry{Research Technologist}{January 2019 - June 2021}{VIB-KU Leuven - Belgium}{
 Maintenance and support of the ethoscope platform in the Liu and Verstreken labs. Implementation of live tracking and stimuli delivery in a newly developed setup. Analysis of internal transcriptomics data.
@@ -244,9 +222,23 @@ Maintenance and support of the ethoscope platform in the Liu and Verstreken labs
 %%% ------------------------------------------------------------
 %%% End of Experience
 
-\NewPart{Talks}
 
-\ShortEntry{VIB Science Day}{May 2022}{\textbf{How do flies sleep in groups?} Second best talk of the department}
+\nocite{Dopp2024} \nocite{Chowdhury2023}
+
+\printbibliography[title={Publications}]
+
+\NewPart{Teaching Experience}
+
+\Entry{Master student rotations}{October 2022- June 2024}{Master in Biomedical Sciences}{Supervised five students during their period of rotations during their Master's program.}
+
+
+\NewPart{Science communicatoin}
+
+\ShortEntry{Oral presentation at VIB Science Day}{May 2022}{}{}
+\ShortEntry{Poster presentation at PhD symposium}{November 2022}{}{}
+\ShortEntry{Poster presentation at Cold Spring Harbor Neurobiology of \textit{Drosophila} meeting}{October 2023}{}{}
+\ShortEntry{Poster presentation at PhD symposium}{November 2024}{}{}
+
 
 
 %%% ------------------------------------------------------------
