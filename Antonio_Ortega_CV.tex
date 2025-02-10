@@ -1,0 +1,360 @@
+\documentclass[paper=a4,fontsize=11pt]{article}
+				
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+%% Custom colors
+%%% ------------------------------------------------------------
+
+\usepackage[svgnames]{xcolor}
+\definecolor{StrongRed}{RGB}{139,0,0}
+\definecolor{DarkRed}{RGB}{200,0,0}
+\definecolor{awesome-red}{HTML}{DC3522}
+\definecolor{header-bar}{HTML}{994C00}
+\definecolor{awesome-skyblue}{HTML}{0395DE}
+\definecolor{gray}{HTML}{5D5D5D}
+\definecolor{lightgray}{HTML}{999999}
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{amsmath,amsfonts,amsthm}     % Math packages
+\usepackage{graphicx}                    % Enable pdflatex
+\newcommand\crule[3][black]{\textcolor{#1}{\rule{#2}{#3}}}
+
+\usepackage[margin=1in, bmargin=.5in]{geometry}        % Decrease margins to 1 inch to make CV wider
+%	\textheight=700px                    % Saving trees ;-)
+\usepackage{url}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{geometry}
+\usepackage{pdfpages}  % Permite adjuntar pdfs al final del documento
+\usepackage{wrapfig}
+\usepackage{lscape}
+\usepackage{rotating}
+\usepackage{epstopdf}
+\usepackage{textcomp} % hace falta para poner apostrofe
+\usepackage{array} % necesario para formatear del tiron una columna de una tabla
+\usepackage{booktabs}
+%\usepackage{pbox} % necesario para introducir salto de linea en celdas de una tabla
+\usepackage{longtable}
+\usepackage{pdflscape}
+\usepackage{amsmath}
+\newcommand\T{\textrm{T}}  % "true"
+\newcommand\F{\textrm{F}}  % "false"
+\usepackage{xspace}
+\usepackage{fancyhdr}
+%\setlength{\headheight}{13.6pt}
+
+\usepackage{multicol} %lists on multicolumns side by side
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{ctable}
+\usepackage{adjustbox} % center images with \adjustimage
+\usepackage{enumitem} % tune up itemize environment
+\usepackage{titlesec}
+\usepackage{ragged2e}
+
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist  %change the margins as given by arguments
+
+
+
+%% Font usage
+%%% --------------------c----------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[osf]{mathpazo}
+
+
+%crule\usepackage{showframe}
+
+\frenchspacing              % Better looking spacings after periods
+%\pagestyle{empty}           % No pagenumbers/headers/footers
+
+
+	
+%%% Macros
+%%% ------------------------------------------------------------
+\newlength{\spacebox}
+\settowidth{\spacebox}{8888888888}			% Box to align text
+\newcommand{\sepspace}{\vspace*{1em}}		% Vertical space macro
+
+\newcommand{\MyName}[1]{ % Name
+		\Huge \usefont{OT1}{phv}{b}{n} \hfill #1
+		\par \normalsize \normalfont}
+		
+\newcommand{\MySlogan}[1]{ % Slogan (optional)
+		\large \usefont{OT1}{phv}{m}{n}\hfill \textit{#1}
+		\par \normalsize \normalfont}
+
+\newcommand{\NewPart}[1]{
+\vspace{-15pt}
+\section*{
+%\uppercase
+{#1}}}
+
+
+\newcommand{\Entry}[4]{
+		\noindent \textbf{#1} \hfill      % Study
+		{\color{gray}\textsf{#2}} \par                  % Duration
+		\noindent \textit{#3} \par        % School / Institution
+		  \noindent \small #4  % Description
+		\normalsize \par \vspace{7.5pt}}
+
+
+\newcommand{\ShortEntry}[4]{
+		\noindent \textbf{#1} \hfill      % Study
+		{\color{gray}\textsf{#2}} \par                  % Duration
+		  \noindent \small #3  % Description
+		\normalsize \par \vspace{7.5pt}}
+
+		
+		
+					
+%Shortcuts
+\newcommand{\apostrofe}{\textquotesingle\xspace}
+\newcommand{\github}{\raisebox{-.25\height}{\includegraphics[width=13pt]{images/github_grey.png}}}
+\newcommand{\stack}{\raisebox{-.25\height}{\includegraphics[width=13pt]{images/stack_1_grey.png}}}
+\newcommand{\linkedin}{\raisebox{-.25\height}{\includegraphics[width=13pt]{images/linkedin_grey.png}}}
+\newcommand{\kaggle}{\raisebox{-.25\height}{\includegraphics[width=13pt]{images/kaggle_grey.jpg}}}
+
+\newcommand{\link}{\raisebox{-.25\height}{\includegraphics[width=13pt]{images/website-icon-8_gray.png}}}
+
+\newcommand{\mail}{\raisebox{-.25\height}{\includegraphics[width=13pt]{images/mail_grey.png}}}
+
+\newcommand{\phone}{\raisebox{-.25\height}{\includegraphics[width=13pt]{images/phone.png}}}
+
+
+
+
+
+%%% Custom sectioning (sectsty package)
+%%% ------------------------------------------------------------
+\usepackage{sectsty,regexpatch}
+
+
+\makeatletter
+
+%% Modify the look of the section rule
+
+\newcommand{\setsectionrulecolor}[1]{\colorlet{secrulecolor}{#1}}
+\setsectionrulecolor{awesome-red}% default
+\xpatchcmd*{\SS@normsectionrule}% <cmd>
+  {\rule}% <search>
+  {\color{secrulecolor}\rule}% <replace>
+  {}{}% <success><failure>
+\makeatother
+
+%% Implement the section rule
+\sectionfont{%			            % Change font of \section command
+	%\usefont{OT1}{phv}{b}{n}%		% bch-b-n: CharterBT-Bold font
+	\sectionrule{0pt}{0pt}{-5pt}{1.7pt}} % width of section rule    
+	
+
+% Customize fancyhdr header
+\pagestyle{fancy}
+\fancyhf{} % sets both header and footer to nothing
+\renewcommand{\headrulewidth}{0pt}
+\chead{\crule[header-bar]{\textwidth}{0.5cm}}
+\lfoot{}
+\cfoot{}
+\rfoot{Page \thepage/2}
+
+\fancypagestyle{plain}{%
+\chead{}
+\cfoot{}
+\rfoot{Page \thepage/2}
+}
+
+\newcolumntype{L}[1]{>{\fontfamily{cmss}\selectfont \raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+	
+%%% Begin Document
+%%% ------------------------------------------------------------
+\begin{document}
+
+
+% you can upload a photo and include it here...
+%\begin{wrapfigure}{l}{0.5\textwidth}
+%	\vspace*{-2em}
+%		\includegraphics[width=0.15\textwidth]{photo}
+%\end{wrapfigure}
+
+%\MyName{Your Name}
+%\MySlogan{Curriculum Vitae}
+%
+%\sepspace
+
+
+
+\thispagestyle{fancy}
+%% Header
+%%% ------------------------------------------------------------
+% Set your name here
+\def\name{\color{StrongRed}{\LARGE{\textsc{\textbf{Antonio Ortega Jiménez}}}}}
+%\centerline{\name}
+%\vspace{10pt}
+%\centerline{
+%Sigynsgade 79, K{\o}benhavn, Denmark
+%|
+%\href{mailto:ntoniogu@gmail.com}{ntoniohu@gmail.com}
+%|
+%\href{https://antortjim.github.io}{antortjim.github.io}
+%}
+
+\centerline{\name}
+
+\begin{figure}[!h]
+
+ \begin{minipage}[l]{0.26\textwidth}
+   \begin{itemize}[leftmargin=5pt]
+     \setlength\itemsep{0.05pt}
+     %\large
+     \item[] \mail \xspace \href{mailto:antortjim1@gmail.com}{antortjim1@gmail.com}
+     \item[] \link \xspace \href{https://antortjim.github.io}{antortjim.github.io}
+   \end{itemize}
+ \end{minipage} %
+ \hspace{2pt}\vrule{} \hspace{2pt}
+ \begin{minipage}[r]{0.50\textwidth}
+   %\large
+   
+   PhD student at Liu Lab @ VIB-KU Leuven Center for Brain \& Disease Research studying the structure and regulation of social sleep in \textit{Drosophila}
+ 
+%   Graduate student in Bioinformatics with background in Biochemistry. Experienced on probabilistic programming, machine learning and data visualization. A passionate self-learner, keen to learn as much as possible while yielding quality results.
+ \end{minipage}
+\end{figure}
+
+%%% Experience
+%%% ------------------------------------------------------------
+\NewPart{Experience}
+
+\Entry{PhD. student}{July 2021 - }{VIB-KU Leuven - Belgium}{
+I am interested in studying the behavior and sleep of \textit{Drosophila}. In my research I try to understand how sleep develops in a context as natural as possible, including social interactions with other individuals. In order to model this, I am building a setup where I aim to track multiple freely interacting individuals over at least a full day.
+}
+
+\Entry{Research Technologist}{January 2019 - June 2021}{VIB-KU Leuven - Belgium}{
+Maintenance and support of the ethoscope platform in the Liu and Verstreken labs. Implementation of live tracking and stimuli delivery in a newly developed setup. Analysis of internal transcriptomics data.
+}
+
+
+\Entry{Student Assistant}{Jul. 2017 - Jul. 2018}{Novozymes - Denmark}{Master\textquotesingle s thesis on proteomics data analysis using probabilistic programmming in the PyMC3 framework.}
+
+
+\Entry{Assistant Research Fellow}{Nov. 2015 - Jun. 2016}{CIC Cartuja-CSIC  - Spain}{Bachelor thesis on the cyanobacterial response to $N_2$.}
+
+%%% ------------------------------------------------------------
+%%% End of Experience
+
+\NewPart{Talks}
+
+\ShortEntry{VIB Science Day}{May 2022}{\textbf{How do flies sleep in groups?} Second best talk of the department}
+
+
+%%% ------------------------------------------------------------
+%%% End of Skills
+
+\NewPart{Grants \& Fellowships}
+
+\begin{itemize}
+\item Fonds Wetenschappelijk Onderzoek (FWO) Travel grant (2022)
+\item Beca de Colaboraci\'on (Spain's Education Ministry) (2016)
+\end{itemize}
+
+
+\NewPart{Education}
+
+\Entry{MSc. Bioinformatics}{2016 - 2018}{University of Copenhagen}{GPA: 10.69/12.0}
+\Entry{BSc. Biochemistry}{2012 - 2016}{University of Seville}{GPA: 3.38 / 4.0}
+
+%%% Awards
+%%% ------------------------------------------------------------
+
+\thispagestyle{plain}
+
+\NewPart{Awards}
+
+\Entry{Best Huelva province high-school record}{Jun. 2012}{Government of Andalusia}{The two best high school students from the province of Huelva were awarded this prize.}
+
+%\Entry{Winner at the high school mathematics olympics}{Apr. 2008}{Andalusian Association for Mathematical Education THALES}{Students were asked to solve non trivial mathematical problems using logic and imagination.}
+
+%%% ------------------------------------------------------------
+%%% End of Awards
+
+
+%%% Languages
+%%% ------------------------------------------------------------
+\NewPart{Languages}
+
+
+
+\begin{minipage}[l]{0.35\textwidth}
+    \textbf{Proficient}
+  \begin{itemize}[leftmargin=5pt]
+    \setlength\itemsep{0.05pt}
+    \item[] \textbf{Spanish}: Mother tongue
+    \item[] \textbf{English}: Full Professional (> C1)
+  \end{itemize}
+\end{minipage} %
+\begin{minipage}[r]{0.65\textwidth}
+  \textbf{Conversational knowledge}
+  \begin{itemize}[leftmargin=5pt]
+    \setlength\itemsep{0.05pt}
+    \item[] Dutch, Italian, French, Danish
+    \item[] 
+  \end{itemize}
+\end{minipage}
+
+\vspace{0.5cm}
+
+%%% ------------------------------------------------------------
+%%% End of Languages
+
+%%% Volunteering
+%%% ------------------------------------------------------------
+
+
+\NewPart{Volunteering}
+
+\Entry{Food distribution volunteer}{Jan. 2017 - June. 2017}{Food bank (f{\o}devareBanken)}{I joined teams of 2-3 people to work in the collection of food items from supermarkets and their distribution around shelters via a van in the Greater Copenhagen area.}
+
+%%% ------------------------------------------------------------
+%%% End of Volunteering
+
+
+%\NewPart{References}
+%
+%References given upon request.
+
+%%% Portfolio
+%%% ------------------------------------------------------------
+\NewPart{Portfolio}
+
+You can check the aforementioned projects and others in the portfolio available in my personal website:
+\href{https://antortjim.github.io/portfolio/}{\color{blue}https://antortjim.github.io/portfolio/}.
+
+%%% ------------------------------------------------------------
+%%% End of Portfolio
+
+
+%%% Interests
+%%% ------------------------------------------------------------
+%\NewPart{Interests}
+%I attend weekly sessions of strength training at USG, the University's sports center, because I think keeping active is really important. I love exploring Copenhagen with my bike, reading and watching good movies and series from time to time.
+%I perform \textit{ad hoc} tasks as volunteer at the food bank (f{\o}devarebanken).
+
+%%% ------------------------------------------------------------
+%%% End of Interests
+
+%%% ------------------------------------------------------------
+%%% End of Independent learning
+
+
+%\vfill
+%\noindent \textcolor{lightgray}{Transcript of results from Universities of Copenhagen and Seville.}
+\newpage
+
+%\input{transcript.tex}
+%\includepdf[pages=-]{append/Antonio_Ortega_Transcript_University}
+%\includepdf[pages=-]{append/Antonio_Ortega_Hamelryck_Recomendation}
+%\includepdf[pages=-]{append/Antonio_Ortega_Mir_Recomendation}
+
+\end{document}
